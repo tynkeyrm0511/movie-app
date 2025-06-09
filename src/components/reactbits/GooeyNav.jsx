@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const GooeyNav = ({
   items,
@@ -15,6 +16,7 @@ const GooeyNav = ({
   const filterRef = useRef(null);
   const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const navigate = useNavigate();
   const noise = (n = 1) => n / 2 - Math.random() * n;
   const getXY = (distance, pointIndex, totalPoints) => {
     const angle =
@@ -84,33 +86,34 @@ const GooeyNav = ({
     textRef.current.innerText = element.innerText;
   };
   const handleClick = (e, index) => {
-    e.preventDefault(); // ngăn nhảy trang ngay lập tức
-    const liEl = e.currentTarget;
-    if (activeIndex === index) return;
-    setActiveIndex(index);
-    updateEffectPosition(liEl);
+  e.preventDefault();
+  const liEl = e.currentTarget;
 
-    if (filterRef.current) {
-      const particles = filterRef.current.querySelectorAll(".particle");
-      particles.forEach((p) => filterRef.current.removeChild(p));
-    }
+  //Nếu đang ở đúng route rồi thì không navigate lại
+  const href = items[index].href;
+  if (window.location.pathname === href) return;
 
-    if (textRef.current) {
-      textRef.current.classList.remove("active");
-      void textRef.current.offsetWidth;
-      textRef.current.classList.add("active");
-    }
+  setActiveIndex(index);
+  updateEffectPosition(liEl);
 
-    if (filterRef.current) {
-      makeParticles(filterRef.current);
-    }
+  filterRef.current?.querySelectorAll(".particle").forEach(p => p.remove());
 
-    // Delay redirect
-    const href = items[index].href;
-    setTimeout(() => {
-      window.location.href = href;
-    }, 400); //animationTime
-  };
+  if (textRef.current) {
+    textRef.current.classList.remove("active");
+    void textRef.current.offsetWidth;
+    textRef.current.classList.add("active");
+  }
+
+  if (filterRef.current) {
+    makeParticles(filterRef.current);
+  }
+
+  //Delay rồi navigate
+  setTimeout(() => {
+    navigate(href);
+  }, animationTime + 200);
+};
+
   const handleKeyDown = (e, index) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -298,15 +301,11 @@ const GooeyNav = ({
                 className={`py-[0.6em] px-[1em] rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${
                   activeIndex === index ? "active" : ""
                 }`}
+                tabIndex={0} // để có thể tab được bằng bàn phím
                 onClick={(e) => handleClick(e, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
               >
-                <a
-                  href={item.href}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none"
-                >
-                  {item.label}
-                </a>
+                <span className="outline-none whitespace-nowrap">{item.label}</span>
               </li>
             ))}
           </ul>

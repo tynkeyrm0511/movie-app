@@ -8,9 +8,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const items = [
-    { label: "Home", href: "/" },
-    { label: "Genres", href: "#" },
-    { label: "Favorites", href: "#" },
+    { label: "TRANG CHỦ", href: "/" },
+    { label: "THỂ LOẠI", href: "/genres" },
+    { label: "PHIM LẺ", href: "/movies" },
+    { label: "PHIM BỘ", href: "/tv-shows" },
+    { label: "YÊU THÍCH", href: "/favourites" },
   ];
 
   return (
@@ -91,13 +93,19 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden bg-zinc-800 text-white flex flex-col items-center gap-4 py-4">
           <Link to="/" onClick={() => setIsMenuOpen(false)}>
-            Home
+            TRANG CHỦ
           </Link>
-          <Link to="#" onClick={() => setIsMenuOpen(false)}>
-            Genres
+          <Link to="/genres" onClick={() => setIsMenuOpen(false)}>
+            THỂ LOẠI
           </Link>
-          <Link to="#" onClick={() => setIsMenuOpen(false)}>
-            Favorites
+          <Link to="/movies" onClick={() => setIsMenuOpen(false)}>
+            PHIM LẺ
+          </Link>
+          <Link to="/tv-shows" onClick={() => setIsMenuOpen(false)}>
+            PHIM BỘ
+          </Link>
+          <Link to="/favourites" onClick={() => setIsMenuOpen(false)}>
+            YÊU THÍCH
           </Link>
         </div>
       )}

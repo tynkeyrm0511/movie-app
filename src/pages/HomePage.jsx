@@ -1,44 +1,31 @@
 import { useState, useEffect } from "react";
 import { getPopularMovies } from "../services/tmdb";
 import MovieList from "../components/MovieList";
-import { useRef } from "react";
-import VariableProximity from "../components/reactbits/VariableProximity";
-import Lottie from "lottie-react";
-import flameAnimation from "../assets/flame.json";
+import SectionHeader from "../components/SectionHeader";
+import flameAnimation from "../assets/trending.json";
 
 export default function HomePage() {
-  const containerRef = useRef(null);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     getPopularMovies()
-      .then((res) => {
-        setMovies(res.data.results);
-      })
-      .catch((err) => {
-        console.error("Loi khi hien thi phim thinh hanh", err);
-      });
+      .then((res) => setMovies(res.data.results))
+      .catch((err) => console.error("Lỗi khi hiển thị phim thịnh hành", err));
   }, []);
 
-  //test commit
-
   return (
-    <div className="p-10">
-      <div className="flex items-center gap-0.5 py-1">
-        <Lottie animationData={flameAnimation} className="w-14 h-14" />
-        <div ref={containerRef} className="relative p-2">
-          <VariableProximity
-            label={"Trends"}
-            className={"variable-proximity-demo text-5xl "}
-            fromFontVariationSettings="'wght' 500, 'opsz' 9"
-            toFontVariationSettings="'wght' 1000, 'opsz' 40"
-            containerRef={containerRef}
-            radius={100}
-            falloff="linear"
-          />
-        </div>
+    <div className="p-10 space-y-10">
+      {/* Trending Movies */}
+      <div>
+        <SectionHeader label="TOP THỊNH HÀNH" to="/popular"  />
+        <MovieList movies={movies} />
       </div>
-      <MovieList movies={movies} />
+
+      {/* You May Like */}
+      <div>
+        <SectionHeader label="CÓ KHI NÍ THÍCH ĐÓ!" to="/popular" />
+        <MovieList movies={movies} />
+      </div>
     </div>
   );
 }
