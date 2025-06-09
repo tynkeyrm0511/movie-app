@@ -23,8 +23,8 @@ export default function HomePage() {
   //test commit
 
   return (
-    <div className="container mx-auto px-4 max-w-screen-xl">
-      <div className="flex items-center gap-0.5 py-4">
+    <div className="p-10">
+      <div className="flex items-center gap-0.5 py-1">
         <Lottie animationData={flameAnimation} className="w-14 h-14" />
         <div ref={containerRef} className="relative p-2">
           <VariableProximity
