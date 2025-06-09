@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import "tailwindcss";
+@theme {
+    --color-darkblue: #030A1B;
+    --color-summersky: #228EE5;
+    --color-aliceblue: #EBFAFF;
+    --color-deepcerise: #E5228D;
+}
