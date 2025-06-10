@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"https://tynkeyrm0511.github.io/movie-app",
+  "homepage": "https://tynkeyrm0511.github.io/movie-app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,15 +14,18 @@
   },
   "dependencies": {
     "@lordicon/react": "^1.11.0",
+    "@react-three/fiber": "^9.1.2",
     "@tailwindcss/vite": "^4.1.8",
     "axios": "^1.9.0",
     "framer-motion": "^12.16.0",
     "gh-pages": "^6.3.0",
+    "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "three": "^0.177.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
