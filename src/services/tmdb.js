@@ -7,7 +7,7 @@ const tmdb = axios.create({
     baseURL: BASE_URL,
     params:{
         api_key: API_KEY,
-        language: 'vi-VN'
+        language: 'en-US'
     },
 });
 
