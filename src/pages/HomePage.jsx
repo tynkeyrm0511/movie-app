@@ -3,7 +3,12 @@ import { getPopularMovies } from "../services/tmdb";
 import MovieList from "../components/MovieList";
 import SectionHeader from "../components/SectionHeader";
 import flameAnimation from "../assets/flame.json";
+import star from '../assets/star.json'
 import Banner from "../components/Banner";
+import { FaStar } from "react-icons/fa";
+
+
+
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
 
@@ -17,15 +22,27 @@ export default function HomePage() {
     <div>
       <Banner />
       {/* Trending Movies */}
-      <div className="p-10 space-y-10">
+      <div className="p-5">
         <div>
-          <SectionHeader label="TOP THỊNH HÀNH" to="/popular-movies" icon={flameAnimation} />
+          <SectionHeader label="Trending" to="/popular-movies" icon={flameAnimation} />
           <MovieList movies={movies} />
         </div>
 
-        {/* You May Like */}
+        {/* Top Rated */}
         <div>
-          <SectionHeader label="CÓ KHI NÍ THÍCH ĐÓ!" to="/popular-movies" />
+          <SectionHeader label="Top Rated" to="/popular-movies" icon={star} />
+          <MovieList movies={movies} />
+        </div>
+
+        {/* Upcoming */}
+        <div>
+          <SectionHeader label="Upcoming" to="/popular-movies" />
+          <MovieList movies={movies} />
+        </div>
+
+        {/* Genres */}
+        <div>
+          <SectionHeader label="Genre" to="/popular-movies" />
           <MovieList movies={movies} />
         </div>
       </div>

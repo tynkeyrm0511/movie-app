@@ -8,15 +8,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const items = [
-    { label: "TRANG CHỦ", href: "/" },
-    { label: "THỂ LOẠI", href: "/genres" },
-    { label: "PHIM LẺ", href: "/movies" },
-    { label: "PHIM BỘ", href: "/tv-shows" },
-    { label: "YÊU THÍCH", href: "/favourites" },
+    { label: "Home", href: "/" },
+    { label: "Popular", href: "/popular-movies" },
+    { label: "Top Rated	", href: "/top-rated" },
+    { label: "Genres", href: "/genres" },
   ];
 
   return (
-    <header>
+    <header className="sticky top-0 bg-black z-50 overflow-hidden">
       <div className="flex justify-between items-center px-6 py-4 bg-zinc-900 backdrop-blur-sm">
         {/* Logo */}
         <div className="flex items-center gap-3 flex-1 p-2">

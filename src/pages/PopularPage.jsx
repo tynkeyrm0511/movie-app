@@ -20,13 +20,13 @@ export default function PopularPage() {
         })
     }, [currentPage])
     return (
-        <div className="p-10">
+        <div className="p-5">
             <div className="flex items-center gap-1 justify-center">
-                <Lottie animationData={flameAnimation} className="h-10 w-10" />
-                <h1 className="text-4xl font-bold">TOP THỊNH HÀNH</h1>
+                <Lottie animationData={flameAnimation} className="h-15 w-15" />
+                <h1 className="text-4xl font-bold">TRENDING</h1>
             </div>
             <MovieListPages movies={movies} />
-            <div className="justify-center flex p-5">
+            <div className="justify-center flex">
                 <button
                     hidden={currentPage === 1}
                     className="bg-zinc-800 hover:bg-zinc-700 cursor-pointer text-white font-bold py-2 px-4 rounded-full"

@@ -8,7 +8,7 @@ export default function MovieCard({ movie }) {
   const vote = Math.floor(movie.vote_average * 10) / 10
   return (
     <div className="m-5">
-      <img className="hover:opacity-80" src={IMAGE_URL + movie.poster_path} alt={movie.title} />
+      <img className="hover:opacity-80 rounded-xl" src={IMAGE_URL + movie.poster_path} alt={movie.title} />
       <h3 className="truncate font-bold">{movie.title}</h3>
       <div className="flex justify-between items-center">
         <p> {yearRelease}</p>

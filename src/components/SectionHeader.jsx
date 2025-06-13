@@ -12,8 +12,8 @@ export default function SectionHeader({ label, to, icon }) {
     <div className="flex items-center justify-between">
       <div className="flex items-center">
         <div ref={containerRef} className="relative">
-          <div className="flex items-center">
-            <Lottie animationData={icon} className="h-10 " />
+          <div className="flex items-center gap-1">
+            <Lottie animationData={icon} className="h-15 " />
             <VariableProximity
               label={label}
               className="variable-proximity-demo text-3xl"
@@ -26,7 +26,7 @@ export default function SectionHeader({ label, to, icon }) {
           </div>
         </div>
       </div>
-      <div className="w-full h-px mx-4 bg-slate-600/50 flex-1" />
+      <div className="w-screen h-px mx-4 bg-slate-600/50 flex-1" />
       <Link to={to} className="text-aliceblue ">
         Xem thêm
       </Link>

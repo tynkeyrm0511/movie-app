@@ -20,8 +20,8 @@ export default function Banner() {
     const vote = Math.floor(topMovie.vote_average * 10) / 10
 
     return (
-        <div className="relative w-screen h-screen">
-            <img className="w-full h-full object-cover" src={imageSrc} alt={topMovie.title} />
+        <div className="relative">
+            <img className="w-screen h-screen object-cover" src={imageSrc} alt={topMovie.title} />
             <div className="absolute inset-0 flex flex-col justify-end p-10 w-[500px] bg-gradient-to-t from-black/80 to-transparent">
                 <h1 className="text-4xl font-bold text-white">{topMovie.title}</h1>
                 <p className="text-white my-4">{topMovie.overview}</p>
